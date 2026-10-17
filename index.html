@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <!-- 모바일 뷰포트 설정 (GEMINI.md 표준 준수) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title id="pageTitle">모바일 명함</title>
+
+  <!-- 카카오톡 및 SNS 공유 시 노출되는 Open Graph 메타 태그 -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" id="ogTitle" content="공식 모바일 명함">
+  <meta property="og:description" id="ogDesc" content="명함 이미지를 터치하시면 바로 전화 상담으로 연결됩니다.">
+  <meta property="og:image" content="images/card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="700">
+  <meta property="og:url" id="ogUrl" content="">
+
+  <!-- 트위터 카드 -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" id="twTitle" content="공식 모바일 명함">
+  <meta name="twitter:description" id="twDesc" content="명함 이미지를 터치하시면 바로 전화 상담으로 연결됩니다.">
+  <meta name="twitter:image" content="images/card.png">
+
+  <!-- 웹앱 테마 컬러 (모바일 상단바 색상) -->
+  <meta name="theme-color" content="#1e293b">
+
+  <!-- 프리미엄 서체: Pretendard 웹폰트 -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+  <!-- 스타일시트 분리 로드 -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 전체 모바일 뷰포트 컨테이너 -->
+  <div class="mobile-container">
+
+    <!-- 상단 헤더: 회사/소속 및 타이틀 -->
+    <header class="card-header">
+      <span class="header-badge" id="headerCompany">소속 회사</span>
+      <h1 class="header-name"><span id="headerName">이름</span> <small id="headerTitle">직함</small></h1>
+    </header>
+
+    <!-- [핵심 1] 터치 시 즉시 전화 걸리는 실물 명함 이미지 카드 -->
+    <section class="card-section">
+      <!-- 터치 안내 상단 배너 -->
+      <div class="touch-call-notice">
+        <span class="touch-icon">👆</span>
+        <span class="notice-text">아래 명함을 터치하면 <strong id="noticePhone">전화로 바로 연결</strong>됩니다!</span>
+      </div>
+
+      <!-- 명함 이미지 터치 링크 (전체 통화 연결) -->
+      <a href="tel:" class="card-wrapper" id="cardTouchArea" aria-label="명함 터치 시 바로 전화가 걸립니다.">
+        <img src="images/card.png" alt="모바일 명함 이미지" class="business-card-img" id="cardImage">
+      </a>
+      <p class="touch-tip">※ 명함 이미지 어디를 눌러도 통화 다이얼 화면이 즉시 열립니다.</p>
+    </section>
+
+    <!-- [핵심 2] 빠른 연락 액션 버튼 그룹 (터치 영역 44px 이상 확보) -->
+    <section class="quick-actions">
+      <!-- 직통 전화 상담 버튼 -->
+      <a href="tel:" class="action-btn btn-call" id="btnCallMain">
+        <span class="btn-icon">📞</span>
+        <div class="btn-info">
+          <span class="btn-label">직통 전화 상담</span>
+          <strong class="btn-value" id="btnPhoneValue">전화걸기</strong>
+        </div>
+      </a>
+
+      <!-- 문자 문의 버튼 -->
+      <a href="sms:" class="action-btn btn-sms" id="btnSms">
+        <span class="btn-icon">💬</span>
+        <div class="btn-info">
+          <span class="btn-label">문자 문의</span>
+          <strong class="btn-value">문자 남기기</strong>
+        </div>
+      </a>
+
+      <!-- 스마트폰 주소록 연락처 저장 버튼 (vCard 자동 생성 및 다운로드) -->
+      <button type="button" class="action-btn btn-vcard" id="btnSaveContact">
+        <span class="btn-icon">👤</span>
+        <div class="btn-info">
+          <span class="btn-label">스마트폰 주소록</span>
+          <strong class="btn-value">연락처 저장 (vCard)</strong>
+        </div>
+      </button>
+    </section>
+
+    <!-- [핵심 3] 상세 정보 및 온라인 채널 섹션 -->
+    <section class="detail-section">
+      <h2 class="section-title">주요 채널 및 오시는 길</h2>
+
+      <div class="link-list">
+        <!-- 1. 공식 홈페이지 링크 (없으면 자동 숨김) -->
+        <a href="#" target="_blank" rel="noopener noreferrer" class="link-item" id="itemWebsite">
+          <div class="link-icon-box site-icon">🌐</div>
+          <div class="link-content">
+            <span class="link-title" id="lblWebsiteTitle">공식 홈페이지</span>
+            <span class="link-desc" id="lblWebsiteDesc">상세 안내 및 정보 확인</span>
+          </div>
+          <span class="arrow-icon">&gt;</span>
+        </a>
+
+        <!-- 2. 카카오톡 1:1 오픈채팅 (없으면 자동 숨김) -->
+        <a href="#" target="_blank" rel="noopener noreferrer" class="link-item item-kakao-chat" id="itemOpenKakao">
+          <div class="link-icon-box kakao-chat-icon">💬</div>
+          <div class="link-content">
+            <span class="link-title">카카오톡 1:1 오픈상담</span>
+            <span class="link-desc" id="lblOpenKakaoDesc">터치 시 카카오톡 실시간 상담 시작</span>
+          </div>
+          <span class="arrow-icon">&gt;</span>
+        </a>
+
+        <!-- 3. 네이버 블로그 (없으면 자동 숨김) -->
+        <a href="#" target="_blank" rel="noopener noreferrer" class="link-item" id="itemBlog">
+          <div class="link-icon-box blog-icon">📝</div>
+          <div class="link-content">
+            <span class="link-title" id="lblBlogTitle">공식 네이버 블로그</span>
+            <span class="link-desc" id="lblBlogDesc">최신 소식 및 정보 보기</span>
+          </div>
+          <span class="arrow-icon">&gt;</span>
+        </a>
+
+        <!-- 4. 유튜브 채널 (없으면 자동 숨김) -->
+        <a href="#" target="_blank" rel="noopener noreferrer" class="link-item" id="itemYoutube">
+          <div class="link-icon-box youtube-icon">▶</div>
+          <div class="link-content">
+            <span class="link-title" id="lblYoutubeTitle">공식 유튜브 채널</span>
+            <span class="link-desc" id="lblYoutubeDesc">영상으로 보는 생생한 정보</span>
+          </div>
+          <span class="arrow-icon">&gt;</span>
+        </a>
+
+        <!-- 5. 위치 정보 및 터치 시 주소 복사 -->
+        <div class="link-item address-item" id="btnCopyAddress" role="button" tabindex="0">
+          <div class="link-icon-box map-icon">📍</div>
+          <div class="link-content">
+            <span class="link-title" id="lblLocationTitle">사무실 위치</span>
+            <span class="link-desc" id="lblAddressText">주소 정보 (터치 시 주소 복사)</span>
+          </div>
+          <span class="copy-badge">주소복사</span>
+        </div>
+
+        <!-- 6. [핵심] 네이버 지도로 길찾기 (카카오톡 인앱 완벽 호환) -->
+        <a href="#" target="_blank" rel="noopener noreferrer" class="link-item item-naver-map" id="btnNaverMap">
+          <div class="link-icon-box map-icon">🗺️</div>
+          <div class="link-content">
+            <span class="link-title">네이버 지도로 길찾기</span>
+            <span class="link-desc" id="lblMapDesc">네이버 지도로 빠른 길 안내 및 내비 연결</span>
+          </div>
+          <span class="arrow-icon">&gt;</span>
+        </a>
+
+        <!-- 7. 이메일 문의 (없으면 자동 숨김) -->
+        <a href="mailto:" class="link-item" id="itemEmail">
+          <div class="link-icon-box mail-icon">✉</div>
+          <div class="link-content">
+            <span class="link-title">이메일 문의</span>
+            <span class="link-desc" id="lblEmailText">이메일 보내기</span>
+          </div>
+          <span class="arrow-icon">&gt;</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- [핵심 4] 명함 공유하기 기능 (카카오톡 및 주소 복사) -->
+    <section class="share-section">
+      <h3 class="share-title">이 명함을 보관하거나 지인에게 전달하기</h3>
+      <div class="share-buttons">
+        <button type="button" class="share-btn btn-share-kakao" id="btnShareKakao">
+          💬 내 카톡으로 받기 &middot; 전달
+        </button>
+        <button type="button" class="share-btn btn-share-link" id="btnShareLink">
+          🔗 명함 웹 주소 복사
+        </button>
+      </div>
+    </section>
+
+    <!-- 하단 여백 확보 (하단 플로팅 전화바와 겹치지 않게 여백) -->
+    <div class="bottom-spacer"></div>
+
+    <!-- [핵심 5] [GEMINI.md 필수 지침] 화면 하단 고정 전화 상담 플로팅 바 -->
+    <aside class="floating-call-bar">
+      <a href="tel:" class="floating-call-link" id="floatingCallBtn">
+        <span class="floating-icon">📞</span>
+        <span class="floating-text"><strong id="floatingName">담당자</strong>에게 <strong>지금 바로 전화걸기</strong></span>
+      </a>
+    </aside>
+
+  </div>
+
+  <!-- 알림용 토스트 팝업 (모바일 화면 상단에 알림 메시지 띄움) -->
+  <div class="toast-popup" id="toastPopup" role="status" aria-live="polite"></div>
+
+  <!-- 1. 명함 데이터 로드 -->
+  <script src="명함설정.js"></script>
+  <!-- 2. 화면 자동 연결 및 기능 실행 스크립트 로드 -->
+  <script src="script.js"></script>
+</body>
+</html>

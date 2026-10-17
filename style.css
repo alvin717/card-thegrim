@@ -1,0 +1,474 @@
+/**
+ * ============================================================================
+ * [style.css] - 모바일 명함 프리미엄 스타일시트 (GEMINI.md 표준 준수)
+ * ============================================================================
+ */
+
+/* 1. 디자인 시스템 토큰 및 변수 설정 */
+:root {
+  --primary-color: #0f4c81;        /* 신뢰감을 주는 메인 네이비 블루 */
+  --primary-dark: #0a3357;         /* 딥 네이비 */
+  --primary-light: #e6f0fa;        /* 연한 블루 배경 */
+  --accent-color: #f59e0b;         /* 골드/앰버 포인트 컬러 */
+  --call-green: #22c55e;           /* 직통 전화 상담용 그린 */
+  --call-green-dark: #16a34a;
+  --kakao-yellow: #fee500;         /* 카카오 공식 노란색 */
+  --naver-green: #03c75a;          /* 네이버 공식 초록색 */
+
+  --text-main: #1e293b;            /* 본문 진한 텍스트 */
+  --text-muted: #64748b;           /* 보조 설명 텍스트 */
+  --text-light: #94a3b8;           /* 옅은 안내 텍스트 */
+
+  --bg-body: #f1f5f9;              /* 전체 배경 연회색 */
+  --bg-card: #ffffff;              /* 카드형 흰색 배경 */
+  --border-light: #e2e8f0;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 10px 25px -5px rgba(0,0,0,0.1);
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+}
+
+/* 2. 기본 초기화 및 가로 스크롤 방지 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  line-height: 1.5;
+  overflow-x: hidden; /* 가로 스크롤 원천 방지 */
+  word-break: keep-all; /* 한글 단어 끊김 방지 */
+}
+
+/* 3. 모바일 중앙 정렬 컨테이너 (스마트폰 최적화: 375px~430px) */
+.mobile-container {
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background-color: var(--bg-card);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 20px 18px 30px;
+}
+
+/* 4. 상단 헤더 */
+.card-header {
+  text-align: center;
+  padding: 8px 0 16px;
+}
+
+.header-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 20px;
+  letter-spacing: -0.3px;
+  margin-bottom: 6px;
+}
+
+.header-name {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.5px;
+}
+
+.header-name small {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-left: 6px;
+}
+
+/* 5. [핵심] 명함 이미지 카드 및 터치 안내 */
+.card-section {
+  margin-bottom: 20px;
+}
+
+.touch-call-notice {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  border: 1px solid #bfdbfe;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  animation: pulseLight 2s infinite ease-in-out;
+}
+
+@keyframes pulseLight {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.015); }
+}
+
+.touch-icon {
+  font-size: 1.15rem;
+}
+
+.notice-text {
+  font-size: 0.84rem;
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+
+.notice-text strong {
+  color: #1d4ed8;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.card-wrapper {
+  display: block;
+  width: 100%;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 10px 20px -3px rgba(15, 76, 129, 0.22);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+  position: relative;
+  background-color: #000000;
+  cursor: pointer;
+}
+
+.card-wrapper:hover,
+.card-wrapper:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px -3px rgba(15, 76, 129, 0.3);
+}
+
+.card-wrapper:active {
+  transform: scale(0.98);
+}
+
+.business-card-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.touch-tip {
+  text-align: center;
+  font-size: 0.74rem;
+  color: var(--text-light);
+  margin-top: 8px;
+}
+
+/* 6. 빠른 연락 액션 버튼 그룹 (최소 터치 높이 44px 이상 엄수) */
+.quick-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 72px; /* 44px 규격 충분히 초과 확보 */
+  padding: 10px 6px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.action-btn:active {
+  transform: scale(0.96);
+}
+
+.btn-icon {
+  font-size: 1.45rem;
+  margin-bottom: 4px;
+}
+
+.btn-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-label {
+  font-size: 0.68rem;
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+.btn-value {
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+/* 버튼별 개별 테마 컬러 */
+.btn-call {
+  background: linear-gradient(135deg, var(--call-green) 0%, var(--call-green-dark) 100%);
+  color: #ffffff;
+}
+
+.btn-sms {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: #ffffff;
+}
+
+.btn-vcard {
+  background: linear-gradient(135deg, #6366f1 0%, #4338ca 100%);
+  color: #ffffff;
+}
+
+/* 7. 상세 정보 및 온라인 링크 목록 */
+.detail-section {
+  margin-bottom: 24px;
+}
+
+.section-title {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #edf2f7;
+}
+
+.link-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.link-item {
+  display: flex;
+  align-items: center;
+  min-height: 52px; /* 터치 높이 확보 */
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  color: inherit;
+  background-color: #f8fafc;
+  border: 1px solid var(--border-light);
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.link-item:hover,
+.link-item:focus {
+  background-color: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.link-item:active {
+  transform: scale(0.99);
+}
+
+.link-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  margin-right: 12px;
+  flex-shrink: 0;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.link-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.link-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.link-desc {
+  font-size: 0.77rem;
+  color: var(--text-muted);
+  margin-top: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.arrow-icon {
+  font-size: 0.95rem;
+  color: #94a3b8;
+  font-weight: 700;
+  margin-left: 8px;
+}
+
+.copy-badge {
+  font-size: 0.72rem;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  padding: 5px 9px;
+  border-radius: 6px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* 카카오톡 오픈상담 강조 */
+.item-kakao-chat {
+  background: linear-gradient(135deg, #fffdf0 0%, #fff9db 100%);
+  border-color: #fde047;
+}
+
+/* 네이버 지도 길찾기 강조 */
+.item-naver-map {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border-color: #86efac;
+}
+
+/* 8. 명함 공유 섹션 */
+.share-section {
+  padding: 16px 14px;
+  background-color: #f8fafc;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-light);
+  margin-bottom: 20px;
+}
+
+.share-title {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.share-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.share-btn {
+  flex: 1;
+  min-height: 44px; /* 최소 터치 높이 */
+  border: none;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.share-btn:active {
+  transform: scale(0.97);
+}
+
+.btn-share-kakao {
+  background-color: var(--kakao-yellow);
+  color: #371d1e;
+}
+
+.btn-share-link {
+  background-color: #e2e8f0;
+  color: var(--text-main);
+}
+
+/* 9. [GEMINI.md 필수 지침] 화면 하단 고정 전화 플로팅 바 */
+.bottom-spacer {
+  height: 72px; /* 플로팅 바에 화면 하단이 가려지지 않도록 빈 공간 확보 */
+}
+
+.floating-call-bar {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 440px;
+  padding: 10px 16px 14px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
+  z-index: 100;
+}
+
+.floating-call-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 50px; /* 44px 이상 확보 */
+  background: linear-gradient(135deg, var(--call-green) 0%, var(--call-green-dark) 100%);
+  color: #ffffff;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 1.02rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.35);
+  transition: transform 0.15s ease;
+}
+
+.floating-call-link:active {
+  transform: scale(0.98);
+}
+
+.floating-icon {
+  margin-right: 8px;
+  font-size: 1.25rem;
+}
+
+.floating-text strong {
+  font-weight: 800;
+}
+
+/* 10. 상단 토스트 알림 팝업 */
+.toast-popup {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100px);
+  background-color: rgba(15, 23, 42, 0.94);
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  z-index: 999;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+  max-width: 90%;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.toast-popup.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
