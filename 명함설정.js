@@ -35,5 +35,5 @@ const CARD_DATA = {
   youtubeDesc: "",                             // 유튜브 한 줄 설명
 
   // [4] 공유 및 배포 주소 (웹 명함 링크를 카톡으로 보낼 때 사용)
-  shareUrl: "https://alvin717.github.io/card-thegrim/"
+  shareUrl: "https://card-thegrim.vercel.app/"
 };
