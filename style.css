@@ -39,14 +39,24 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-html, body {
+html {
+  width: 100%;
+  /* 루트 브라우저 스크롤 복원: html의 overflow를 해제해야 모바일 주소창 연동 및 첫 터치 스크롤이 매끄럽게 작동합니다 */
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
   width: 100%;
   min-height: 100%;
+  min-height: 100dvh; /* 스마트폰 동적 주소창 높이 변화 완벽 대응 */
   font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
   background-color: var(--bg-body);
   color: var(--text-main);
   line-height: 1.5;
-  overflow-x: hidden; /* 가로 스크롤 원천 방지 */
+  overflow-x: hidden; /* body 레벨에서 가로 스크롤 안전 차단 */
+  -webkit-overflow-scrolling: touch; /* iOS 및 모바일 웹킷 관성 부드러운 스크롤 */
+  touch-action: pan-y; /* 세로 스크롤 제스처 즉각 반응 (첫 터치 멈춤 방지) */
   word-break: keep-all; /* 한글 단어 끊김 방지 */
 }
 
@@ -56,6 +66,7 @@ html, body {
   max-width: 440px;
   margin: 0 auto;
   min-height: 100vh;
+  min-height: 100dvh;
   background-color: var(--bg-card);
   box-shadow: var(--shadow-lg);
   display: flex;
@@ -145,6 +156,7 @@ html, body {
   position: relative;
   background-color: #000000;
   cursor: pointer;
+  touch-action: pan-y; /* 명함 위에서 손가락으로 올릴 때 즉시 매끄럽게 스크롤되도록 설정 */
 }
 
 .card-wrapper:hover,
@@ -190,6 +202,7 @@ html, body {
   text-decoration: none;
   border: none;
   cursor: pointer;
+  touch-action: manipulation; /* 모바일 터치 반응 딜레이 제거 */
   transition: all 0.15s ease;
   box-shadow: var(--shadow-sm);
 }
@@ -267,6 +280,7 @@ html, body {
   color: inherit;
   background-color: #f8fafc;
   border: 1px solid var(--border-light);
+  touch-action: manipulation; /* 모바일 터치 반응 딜레이 제거 */
   transition: all 0.15s ease;
   cursor: pointer;
 }
